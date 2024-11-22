@@ -28,11 +28,25 @@ rewards = [
     "🥳 Wow! You're a conditional pro!",
 ]
 
-# Streamlit app
+# App title and introduction
 st.title("🎲 Conditional Practice Game")
 st.subheader("Learn and practice your 1st and 2nd conditionals in a fun and interactive way!")
 
-st.write("### Choose Your Question Type:")
+# Introduction and instructions
+st.write("👋 Welcome! This game will help you practice your conditionals. Get ready to answer creative questions and expand your English skills!")
+st.write("👉 **How to Play:**")
+st.markdown("""
+- Choose a type of question: **1st Conditional** or **2nd Conditional**.
+- Click the button to get a question.
+- Write your answer in the input box and submit it.
+- Have fun and be as creative as possible!
+""")
+
+# Add an image for fun
+st.image("https://cdn.pixabay.com/photo/2017/01/06/19/15/question-mark-1950933_1280.png", width=400)
+
+# Choose the question type
+st.write("### 🤔 Choose Your Question Type:")
 question_type = st.radio(
     "",
     ["1st Conditional", "2nd Conditional"]
@@ -40,7 +54,7 @@ question_type = st.radio(
 
 # Generate question
 if st.button("🎯 Get a Question"):
-    st.markdown("---")
+    st.markdown("---")  # Add a separator
     if question_type == "1st Conditional":
         question = random.choice(first_conditional_questions)
         st.write(f"**📋 (1st Conditional):** {question}")
@@ -48,19 +62,20 @@ if st.button("🎯 Get a Question"):
         question = random.choice(second_conditional_questions)
         st.write(f"**📋 (2nd Conditional):** {question}")
 
-# Input answer
+# Input for the user's answer
 st.write("### ✍️ Your Answer:")
 answer = st.text_input("Type your answer here:")
 
-# Randomized rewards logic
+# Reward logic for submitting an answer
 if answer:
-    reward = random.choice(rewards)
-    st.success(reward)
+    reward = random.choice(rewards)  # Select a random reward
+    st.success(reward)  # Display the reward message
     
-    # Add a random animation
+    # Add random animations
     if random.choice([True, False]):
         st.balloons()
     else:
         st.snow()
     
     st.write("✨ Feel free to try another question!")
+
